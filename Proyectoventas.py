@@ -33,6 +33,8 @@ plt.title('Ventas Totales por Estado')
 plt.xlabel('Estado')
 plt.ylabel('Monto Total Gastado')
 plt.show()
+# PLT O PYPLOT. SE UTILIZA PARA CREAR GRAFICOS Y VISUALIZACION
+# DE MANERA MAS SENSILLLA
 # ANALISIS POR SEGMENTO
 # Agrupar por segmento y calcular el monto total gastado
 ventas_por_segmento = datos_limpios.groupby('Segment')['Amount_spent'].sum()
@@ -46,7 +48,7 @@ plt.title('Ventas Totales por Segmento')
 plt.xlabel('Segmento')
 plt.ylabel('Monto Total Gastado')
 plt.show()
-#ANALISIS POR METODO DE PAGO
+# ANALISIS POR METODO DE PAGO
 # Agrupar por método de pago y calcular el monto total gastado
 ventas_por_metodo_pago = datos_limpios.groupby('Payment_method')['Amount_spent'].sum()
 
