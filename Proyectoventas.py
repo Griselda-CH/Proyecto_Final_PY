@@ -4,9 +4,11 @@ Editor de Spyder
 Este es un archivo temporal.
 """
 import pandas as pd
-datos= pd.read_csv('C:\\Users\\Intel i5\\.spyder-py3\\Proyecto Final\\tiendaonline.csv')
+datos= pd.read_csv('online_store_customer_data.csv')
+#
 print(datos.head())
 print(datos.info())
+
 # Verificar la cantidad de valores nulos por columna
 print(datos.isnull().sum())
 
@@ -18,9 +20,20 @@ datos_limpios['Transaction_date'] = pd.to_datetime(datos_limpios['Transaction_da
 
 # Mostrar los datos limpios
 print(datos_limpios.info())
+
+
 # ANALISIS DE VENTAS POR ESTADO
+
 # Agrupar por estado y calcular el monto total gastado
 ventas_por_estado = datos_limpios.groupby('State_names')['Amount_spent'].sum()
+# Crear tabla resumen de ventas por estado
+resumen_ventas_estado = pd.DataFrame({
+    'Estado': ventas_por_estado.index,
+    'Ventas Totales ($)': ventas_por_estado.values
+})
+
+# Mostrar el resumen ordenado
+print(resumen_ventas_estado.sort_values(by='Ventas Totales ($)', ascending=False))
 
 # Mostrar los resultados
 print(ventas_por_estado)
@@ -61,6 +74,22 @@ plt.show()
 #ANALISIS TEMPORAL DE VENTAS
 # Extraer el mes de la columna de fechas
 datos_limpios['Month'] = datos_limpios['Transaction_date'].dt.month
+
+# Extraer más información temporal: año y trimestre
+datos_limpios['Year'] = datos_limpios['Transaction_date'].dt.year
+datos_limpios['Quarter'] = datos_limpios['Transaction_date'].dt.to_period('Q')
+
+# Agrupar por año y trimestre
+ventas_por_trimestre = datos_limpios.groupby(['Year', 'Quarter'])['Amount_spent'].sum()
+print(ventas_por_trimestre)
+
+# Visualizar los resultados
+ventas_por_trimestre.unstack().plot(kind='bar', stacked=True, figsize=(10,6), color=['skyblue', 'orange', 'green'])
+plt.title('Ventas Totales por Trimestre')
+plt.xlabel('Año')
+plt.ylabel('Monto Total Gastado')
+plt.xticks(rotation=0)
+plt.show()
 
 # Agrupar por mes y calcular el monto total gastado
 ventas_por_mes = datos_limpios.groupby('Month')['Amount_spent'].sum()
