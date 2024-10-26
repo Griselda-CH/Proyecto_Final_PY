@@ -47,6 +47,7 @@ ventas_por_estado.plot(kind='bar', figsize=(10,6)) # Crea un grafico de barras #
 plt.title('Ventas Totales por Estado') # Esta funcion difine el titulo
 plt.xlabel('Estado')  
 plt.ylabel('Monto Total Gastado') # Etiqueta los ejes X Y para el grafico
+plt.savefig('Ventas Totales por Estado.png', dpi=300, bbox_inches='tight')
 plt.show() # Muestra el grafico
 
 # ANALISIS POR SEGMENTO
@@ -61,6 +62,7 @@ ventas_por_segmento.plot(kind='bar', figsize=(8,5))
 plt.title('Ventas Totales por Segmento')
 plt.xlabel('Segmento')
 plt.ylabel('Monto Total Gastado')
+plt.savefig('Ventas Totales por Segmento.png', dpi=300, bbox_inches='tight')
 plt.show()
 # ANALISIS POR METODO DE PAGO
 # Agrupar por método de pago y calcular el monto total gastado
@@ -76,6 +78,7 @@ ventas_por_metodo_pago.plot(kind='pie', autopct='%1.1f%%', figsize=(7,7))
 # autopct='%1.1f%%' Muestra el porcentaje de cada porcion en 1 decimal
 plt.title('Distribución de Ventas por Método de Pago')
 plt.ylabel('')
+plt.savefig('Ventas Totales por Distribucion de Méto de Pago.png', dpi=300, bbox_inches='tight')
 plt.show()
 #ANALISIS TEMPORAL DE VENTAS
 # Extraer el mes de la columna de fechas
@@ -101,6 +104,7 @@ ventas_por_mes.plot(kind='line', marker='o', figsize=(8,5))
 plt.title('Ventas Totales por Mes')
 plt.xlabel('Mes')
 plt.ylabel('Monto Total Gastado')
+plt.savefig('Ventas Totales por Mes.png', dpi=300, bbox_inches='tight')
 plt.grid(True)
 plt.show()
 
@@ -124,6 +128,7 @@ ventas_por_grupo_edad.plot(kind='bar', figsize=(8,5))
 plt.title('Ventas Totales por Grupo de Edad')
 plt.xlabel('Grupo de Edad')
 plt.ylabel('Monto Total Gastado')
+plt.savefig('Ventas Totales por Grupo de Edad.png', dpi=300, bbox_inches='tight')
 plt.show()
 # Exportar datos 
 datos_limpios.to_csv('resultados_limpios.csv', index=False)
