@@ -1,11 +1,10 @@
-
 """
 Editor de Spyder
 
 Este es un archivo temporal.
 """
 import pandas as pd
-datos= pd.read_csv('online_store_customer_data.csv') # Abre el arfchivo CSV o excel
+datos= pd.read_csv('C:\\Users\\Intel i5\\.spyder-py3\\Proyecto Final\\tiendaonline.csv') # Abre el arfchivo CSV o excel
 print(datos.head()) #Devuelve las primeras 5 filas
 print(datos.info())  # Mostramos el data frame
 # Verificar la cantidad de valores nulos por columna
@@ -47,6 +46,7 @@ ventas_por_estado.plot(kind='bar', figsize=(10,6)) # Crea un grafico de barras #
 plt.title('Ventas Totales por Estado') # Esta funcion difine el titulo
 plt.xlabel('Estado')  
 plt.ylabel('Monto Total Gastado') # Etiqueta los ejes X Y para el grafico
+plt.savefig('Ventas_Totales_por_Estado.png', dpi=300, bbox_inches='tight')  # dpi=300 para alta calidad
 plt.show() # Muestra el grafico
 
 # ANALISIS POR SEGMENTO
@@ -61,6 +61,7 @@ ventas_por_segmento.plot(kind='bar', figsize=(8,5))
 plt.title('Ventas Totales por Segmento')
 plt.xlabel('Segmento')
 plt.ylabel('Monto Total Gastado')
+plt.savefig('Ventas_Totales_por_Segmento.png', dpi=300, bbox_inches='tight')
 plt.show()
 # ANALISIS POR METODO DE PAGO
 # Agrupar por método de pago y calcular el monto total gastado
@@ -74,8 +75,9 @@ print(ventas_por_metodo_pago)
 ventas_por_metodo_pago.plot(kind='pie', autopct='%1.1f%%', figsize=(7,7))
 # Kind= 'pie' Crea un grafico de pastel (pie chart) para visualizar la proporción de ventas por metodo de pago
 # autopct='%1.1f%%' Muestra el porcentaje de cada porcion en 1 decimal
-plt.title('Distribución de Ventas por Método de Pago')
+plt.title('Distribucion de Ventas por Metodo de Pago')
 plt.ylabel('')
+plt.savefig('Distribucion_de_Ventas_por_Metodo_de_Pago.png', dpi=300, bbox_inches='tight')
 plt.show()
 #ANALISIS TEMPORAL DE VENTAS
 # Extraer el mes de la columna de fechas
@@ -101,7 +103,9 @@ ventas_por_mes.plot(kind='line', marker='o', figsize=(8,5))
 plt.title('Ventas Totales por Mes')
 plt.xlabel('Mes')
 plt.ylabel('Monto Total Gastado')
+plt.savefig('Ventas_Totales_por_Mes.png', dpi=300, bbox_inches='tight')
 plt.grid(True)
+
 plt.show()
 
 # ANALISIS DE CLIENTES POR LA EDAD
@@ -124,7 +128,7 @@ ventas_por_grupo_edad.plot(kind='bar', figsize=(8,5))
 plt.title('Ventas Totales por Grupo de Edad')
 plt.xlabel('Grupo de Edad')
 plt.ylabel('Monto Total Gastado')
+plt.savefig('Ventas_Totales_por_Grupo_de_Edad.png', dpi=300, bbox_inches='tight')
 plt.show()
 # Exportar datos 
 datos_limpios.to_csv('resultados_limpios.csv', index=False)
-
