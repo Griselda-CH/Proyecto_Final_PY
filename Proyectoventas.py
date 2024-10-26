@@ -1,4 +1,3 @@
-
 """
 Editor de Spyder
 
@@ -132,4 +131,5 @@ plt.savefig('Ventas Totales por Grupo de Edad.png', dpi=300, bbox_inches='tight'
 plt.show()
 # Exportar datos 
 datos_limpios.to_csv('resultados_limpios.csv', index=False)
+
 
